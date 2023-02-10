@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="tsm_invoice">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+
+                        <div align="center" style="margin-top:0mm">
+                            <h4>
+                                <strong>
+                                    <span t-field="o.no_invoice" style="text-align:center" />
+                                </strong>
+                            </h4>
+                        </div>
+                        <br />
+
+                        <h6 style="text-align:left">
+                            <strong>INFORMACIÓN DEL CLIENTE</strong>
+                        </h6>
+
+                        <h7>
+                            <strong>Nombre:</strong>
+                            <small>
+                                <span t-field="o.customer_ids.customer_name" />
+                                <br />
+                            </small>
+                        </h7>
+
+                        <t t-if="o.customer_ids.cell_phone">
+
+                            <h7>
+                                <strong>CELL PHONE:</strong>
+                                <small>
+                                    <span t-field="o.customer_ids.cell_phone" />
+                                </small>
+                                <br />
+                            </h7>
+                        </t>
+
+                        <t t-if="o.customer_ids.email">
+                            <h7>
+                                <strong>EMAIL:</strong>
+                                <small>
+                                    <span t-field="o.customer_ids.email" />
+                                </small>
+                                <br />
+                            </h7>
+                        </t>
+
+                        <br />
+                        <br />
+
+                        <div class="row no-gutters">
+
+                            <table class="table table-sm o_main_table">
+                                <colgroup>
+                                    <col width="35%" />
+                                    <col width="35%" />
+                                    <col width="5%" />
+                                    <col width="10%" />
+                                    <col width="5%" />
+                                    <col width="5%" />
+                                    <col width="5%" />
+                                </colgroup>
+
+                                <thead>
+                                    <tr>
+                                        <th style="text-align:center">
+                                            <b>PRODUCTO</b>
+                                        </th>
+                                        <th style="text-align:center">
+                                            <b>DESCRIPCIÓN</b>
+                                        </th>
+                                        <th style="text-align:center">
+                                            <b>CANTIDAD</b>
+                                        </th>
+                                        <th style="text-align:center">
+                                            <b>PRECIO</b>
+                                        </th>
+                                        <th style="text-align:center">
+                                            <b>DESCUENTO</b>
+                                        </th>
+                                        <th style="text-align:center">
+                                            <b>DESCUENTO TOTAL</b>
+                                        </th>
+                                        <th style="text-align:left">
+                                            <b>SUB_TOTAL</b>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr t-foreach='o.invoice_line' t-as='i'>
+
+                                        <td style="text-align:left">
+                                            <span t-field="i.product" />
+                                        </td>
+
+                                        <td style="text-align:left">
+                                            <span t-field="i.description" />
+                                        </td>
+
+                                        <td style="text-align:left">
+                                            <span t-field="i.product" />
+                                        </td>
+
+                                        <td style="text-align:left">
+                                            <span t-field="i.price" />
+                                        </td>
+
+                                        <td style="text-align:left">
+                                            <span t-field="i.amount" />
+                                        </td>
+
+                                        <td style="text-align:left">
+                                            <span t-field="i.discount" />
+                                        </td>
+
+                                        <td style="text-align:left">
+                                            <span t-field="i.discount_total" />
+                                        </td>
+
+                                        <td style="text-align:left">
+                                            <span t-field="i.sub_total" />
+                                        </td>
+
+                                    </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <h7>
+                                    <strong>PRECIO TOTAL:</strong>
+                                    <small>
+                                        <span t-field="o.total" />
+                                        <br />
+                                    </small>
+                                </h7>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+        <report
+            id="action_report_tsm_invoice"
+            model="tsm.invoice"
+            string="Reporte Facturas"
+            menu="True"
+            report_type="qweb-pdf"
+            name="tsm_store.tsm_invoice"
+            file="tsm_store.tsm_invoice"
+        />
+    </data>
+</odoo>

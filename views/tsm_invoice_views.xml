@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="tsm_invoice_form" model="ir.ui.view">
+            <field name="name">tsm.invoice.form</field>
+            <field name="model">tsm.invoice</field>
+            <field name="arch" type="xml">
+                <header>
+                    <button name="button_asiento"  string="Asiento" type="object"/>
+                    <button name="button_validado" class='btn-primary' string="Validado" type="object" states="BORRADOR"/>
+                    <button name="button_borrador" class='btn-primary' string="Borrador" type="object" states="VALIDADA"/>
+                    <button name="button_pagada" class='btn-primary' string="Pagada" type="object" states="VALIDADA"/>
+                    <button name="button_cancelado" class='btn-primary' string="Cancelar" type="object" states="PAGADA"/>
+                    <button name="button_borrador" class='btn-primary' string="Borrador" type="object" states="CANCELADO"/>
+                    <field name="state" widget="statusbar" statusbar_visible="BORRADOR,VALIDADA,PAGADA"/>
+                </header>
+                <sheet>
+                    
+
+                <div class="oe_title">
+                    <div class="oe_button_box">
+                        <button name="button_reasign" class="oe_stat_button" icon="fa-user"
+                            string="Reasignar" type="object" states="PAGADA" />
+                    </div>
+                </div>
+
+                <form string="Model Description">
+                    <sheet>
+                        <group col='4'>
+                            <group>
+                                <field name="partner" attrs="{'readonly':[('state', '=', 'PAGADA')]}" />
+                                <field name="journal" attrs="{'readonly':[('state', '=', 'PAGADA')]}" />
+                            </group>
+                            <group>
+                                <field name="no_invoice" attrs="{'readonly':[('state', '=', 'PAGADA')]}"/>
+                            </group>
+                            <group>
+                                <field name="payment_method" attrs="{'readonly':[('state', '=', 'PAGADA')]}"/>
+                            </group>
+                            
+                            <group>
+                                <field name="date" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="account_move_id" readonly="1"/>
+                            </group>
+                            
+                        </group>
+                        
+                        <field name="invoice_line">
+                            <tree  editable ='bottom'>
+                                    <field name="product"/>
+                                    <field name="description"/>
+                                    <field name="amount"/>
+                                    <field name="price"/>
+                                    <field name="discount"/>
+                                    <field name="discount_total"/>
+                                    <field name="sub_total"/>
+                            </tree>
+                        </field>
+                            
+                        <group>
+                            <field name="total"/>
+                        </group>
+                    </sheet>
+                </form>
+            </sheet>
+
+            </field>
+        </record>
+
+
+        <record id="tsm_invoice_tree" model="ir.ui.view">
+            <field name="name">tsm.invoice.tree</field>
+            <field name="model">tsm.invoice</field>
+            <field name="arch" type="xml">
+
+                <tree string="Model Description">
+                    <field name="customer_ids" />
+                    <field name="no_invoice" />
+                    <field name="date" readonly='1' />
+                </tree>
+
+            </field>
+        </record>
+
+
+        <!-- WIZARD  -->
+
+        <record id="tsm_invoice_reasign" model="ir.ui.view">
+            <field name="name">invoice.reasign.form</field>
+            <field name="model">invoice.reasign</field>
+            <field name="arch" type="xml">
+                <form string="Reasignacion de tareas">
+                    <group>
+                        <group>
+                            <field name="old_customer" />
+                            <field name="new_customer" />
+                        </group>
+                        <group>
+                            <field name="old_payment_method" />
+                            <field name="new_payment_method" />
+                        </group>
+                    </group>
+                    <group>
+                        <field name="password" type="password"/>
+                    </group>
+                    <footer>
+                        <button name="do_reasign" string="Reasignar" type="object"
+                            class="oe_highlight" />
+                    </footer>
+
+                </form>
+            </field>
+
+
+        </record>
+    </data>
+</odoo>

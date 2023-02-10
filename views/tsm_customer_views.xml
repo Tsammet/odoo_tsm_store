@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="tsm_customer_form" model="ir.ui.view">
+            <field name="name">tsm.customer.form</field>
+            <field name="model">tsm.customer</field>
+            <field name="arch" type="xml">
+                <form string="Model Description">
+                    <sheet>
+                        <div class = "oe_title">
+                            <div class="oe_button_box">
+                                <button name="button_reasign" class="oe_stat_button" icon="fa-user"
+                                    string="Reasignar" type="object"/>
+                            </div>
+                             
+                        </div>
+                        <group>
+                            <field name="picture" widget="image" class="oe_avatar" nolabel="1"  options="{'preview_image': 'picture'}"/>
+                        </group>
+                        <group col='2'>
+                            <group>
+                                <field name="first_name" />
+                            </group>
+                            <group>
+                                <field name="last_name"/>
+                            </group>
+                        </group>
+                        <group col='2'>
+                            <group>
+                                <field name="document"/>
+                            </group>
+                            <group>
+                                <field name="no_document"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+
+                                <field name="email"/>
+                            </group>
+                            <group>
+                                <field name="cell_phone"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="tsm_customer_tree" model="ir.ui.view">
+            <field name="name">tsm.customer.tree</field>
+            <field name="model">tsm.customer</field>
+            <field name="arch" type="xml">
+
+                <tree string="Model Description">
+                    <field name="customer_name" />
+                    <field name="document" />
+                    <field name="cell_phone" />
+                    <field name="email" />
+                </tree>
+
+            </field>
+        </record>
+
+        <!-- WIZARD -->
+
+        <record id="tsm_customer_reasign" model="ir.ui.view">
+            <field name="name">customer.reasign.form</field>
+            <field name="model">customer.reasign</field>
+            <field name="arch" type="xml">
+                <form string="Reasignacion de Cliente">
+                    <group col="3">
+                        <group>
+                            <field name="old_first_name" readonly="1" />
+                            <field name="new_first_name" />
+                            <br/>
+                            <field name="old_no_document" readonly="1"/>
+                            <field name="new_no_document"/>
+                        </group>
+                        <group>
+                            <field name="old_last_name" readonly="1"/>
+                            <field name="new_last_name" />
+                            <br/>
+                            <field name="old_cellphone" readonly="1"/>
+                            <field name="new_cellphone"/>
+                        </group>
+                        <group>
+                            <field name="old_document" readonly="1"/>
+                            <field name="new_document" />
+                            <br/>
+                            <field name="old_email" readonly="1"/>
+                            <field name="new_email"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="do_reasign" string="Reasignar" type="object"
+                            class="oe_highlight" />
+                    </footer>
+
+                </form>
+            </field>
+
+
+        </record>
+
+    </data>
+</odoo>

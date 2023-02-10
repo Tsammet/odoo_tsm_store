@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="tsm_product_form" model="ir.ui.view">
+            <field name="name">tsm.product.form</field>
+            <field name="model">tsm.product</field>
+            <field name="arch" type="xml">
+                <form string="Model Description">
+                    <sheet>
+                        
+                        <div class="oe_title">
+                            <div class="oe_button_box">
+                                <button name="button_reasign" class="oe_stat_button" icon="fa-user"
+                                    string="Reasignar" type="object" />
+                            </div>
+                        </div>
+                        <group>
+                            <field name="image" widget="image" class="oe_avatar" nolabel="1"
+                                options="{'preview_image': 'image'}"/>
+                        </group>
+                        <group col="2">
+                            <group>
+                                <field name="product" />
+                            </group>
+                            <group>
+                                <field name="account" />
+                            </group>
+                            <group>
+                                <field name="price" />
+                            </group>
+                        </group>
+
+                        <group col="2">
+                            <group>
+                                <field name="category_id" />
+                            </group>
+                            <group>
+                                <field name="brand_id" />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="tsm_product_tree" model="ir.ui.view">
+            <field name="name">tsm.product.tree</field>
+            <field name="model">tsm.product</field>
+            <field name="arch" type="xml">
+
+                <tree string="Model Description">
+                    <field name="product" />
+                    <field name="category_id" />
+                    <field name="brand_id" />
+                    <field name="price" />
+                    <!-- CANTIDAD DEL PRODUCTO VENDIDO EN LAS LINEAS DE FACTURAS  -->
+                    <!-- RESULTADO DE CADA PRODUCTO VENDIDO EN LA LINEAS DE FACTURAS -->
+                </tree>
+
+            </field>
+        </record>
+
+        <!-- WIZZARD -->
+
+        
+        <record id="tsm_product_reasign" model="ir.ui.view">
+            <field name="name">product.reasign.form</field>
+            <field name="model">product.reasign</field>
+            <field name="arch" type="xml">
+                <form string="Reasignacion de Productos">
+                    <group>
+                        <group>
+                            <field name="old_name" readonly = "1" />
+                            <field name="old_image" widget="image" class="oe_avatar" nolabel="1"
+                                options="{'preview_image': 'old_image'}" readonly="1"/>                        </group>
+                        <group>
+                            <field name="new_name" />
+                            <field name="new_image" widget="image" class="oe_avatar" nolabel="1"/>         
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="do_reasign" string="Reasignar" type="object"
+                            class="oe_highlight" />
+                    </footer>
+
+                </form>
+            </field>
+
+
+        </record>
+
+
+    </data>
+</odoo>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   <data>
+      
+      
+      <menuitem id="store_root" name="TIENDA" sequence="5" web_icon = "tsm_store,static/description/store_icon_tsm.png"/>
+      
+      <menuitem id="store_main" parent="store_root" name="Store SM" sequence="5"/>
+      
+      <menuitem id="invoice_main" parent="store_root"  name="Facturas main" sequence="5"/>
+      
+   
+      <record id="remision_action" model="ir.actions.act_window">
+         <field name="name">Remisión</field>
+         <field name="res_model">tsm.remission</field>
+         <field name="view_type">form</field>
+         <field name="view_mode">tree,form</field> 
+        </record>
+   
+      <menuitem id="remission_main" parent="store_root" action="remision_action" name="Remisión" sequence="5"/>
+
+
+
+
+    <record id="customer_action" model="ir.actions.act_window">
+      <field name="name">Clientes</field>
+      <field name="res_model">tsm.customer</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field> 
+     </record>
+
+     
+     <menuitem id="customer_main" parent="store_root" action="customer_action" name="Clientes SM" sequence="5"/>
+     
+     
+     
+     <record id="invoice_action" model="ir.actions.act_window">
+        <field name="name">Facturas</field>
+        <field name="res_model">tsm.invoice</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+      </record>
+      
+      <menuitem id="invoicex" parent="invoice_main" action="invoice_action" name="Facturas" sequence="5"/>
+
+
+     <record id="sale_order_action" model="ir.actions.act_window">
+        <field name="name">Orden de venta</field>
+        <field name="res_model">tsm.sale.order</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+      </record>
+      
+      <menuitem id="sale_order" parent="invoice_main" action="sale_order_action" name="Orden Venta" sequence="5"/>
+
+
+    <!-- SUB -->
+
+
+    
+    
+    <record id="category_action" model="ir.actions.act_window">
+       <field name="name">Categorias</field>
+       <field name="res_model">tsm.category</field>
+       <field name="view_type">form</field>
+       <field name="view_mode">tree,form</field>
+      </record>
+      
+   <menuitem id="category_menu" action="category_action" parent="store_main" name="Categorias" sequence="5"/>
+
+
+
+   
+   
+   <record id="product_action" model="ir.actions.act_window">
+      <field name="name">Productos</field>
+      <field name="res_model">tsm.product</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+   </record>
+   
+   <menuitem id="product_menu" action="product_action" parent="store_main" name="Productos" sequence="5"/>
+   
+
+
+
+   <record id="brand_action" model="ir.actions.act_window">
+      <field name="name">Marcas</field>
+      <field name="res_model">tsm.brand</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+   </record>
+   
+   <menuitem id="brand_menu" action="brand_action" parent="store_main" name="Marcas" sequence="5"/>
+
+ </data>
+</odoo>

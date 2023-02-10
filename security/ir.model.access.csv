@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_tsm_product,access_tsm_product,model_tsm_product,base.group_user,1,1,1,1 
+access_tsm_category,access_tsm_category,model_tsm_category,base.group_user,1,1,1,1 
+access_tsm_brand,access_tsm_brand,model_tsm_brand,base.group_user,1,1,1,1 
+access_tsm_customer,access_tsm_customer,model_tsm_customer,base.group_user,1,1,1,1 
+access_tsm_invoice,access_tsm_invoice,model_tsm_invoice,base.group_user,1,1,1,1 
+access_tsm_invoice_line,access_tsm_invoice_line,model_tsm_invoice_line,base.group_user,1,1,1,1 
+access_tsm_sale_order,access_tsm_sale_order,model_tsm_sale_order,base.group_user,1,1,1,1 
+access_tsm_sale_order_line,access_tsm_sale_order_line,model_tsm_sale_order_line,base.group_user,1,1,1,1 
+access_tsm_remission_line,access_tsm_remission_line,model_tsm_remission_line,base.group_user,1,1,1,1
+access_tsm_remission,access_tsm_remission,model_tsm_remission,base.group_user,1,1,1,1 

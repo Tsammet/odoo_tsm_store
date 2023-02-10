@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="tsm_customer">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+
+                    <div align="center" style="margin-top:0mm">
+                        <h4>
+                            <strong>
+                                <span t-field="o.customer_name" style="text-align:center" />
+                            </strong>
+                        </h4>
+                        
+                    </div>
+                    <div class="col-6" style="margin-left:40mm; font-size:14px;">
+                        <img t-if="o.picture" t-att-src="image_data_uri(o.picture)" class="float-left" style="max-width:70mm; max-height:50mm"/>
+                    </div>
+                    <h7>
+                        <strong>Nombres:</strong>
+                        <small>
+                            <span t-field="o.first_name" />
+                            <br />
+                        </small>
+                    </h7>
+
+
+                    <h7>
+                        <strong>Apellidos:</strong>
+                        <small>
+                            <span t-field="o.last_name" />
+                        </small>
+                        <br />
+                    </h7>
+                    <br />
+                    <h7>
+                        <strong>Tipo Documento:</strong>
+                        <small>
+                            <span t-field="o.document" />
+                        </small>
+                    </h7>
+                    <br />
+                    <h7>
+                        <strong>No Documento:</strong>
+                        <small>
+                            <span t-field="o.no_document" />
+                        </small>
+                    </h7>
+                    <br />
+                    <t t-if="o.email">
+                        <h7>
+                            <strong>EMAIL:</strong>
+                            <small>
+                                <span t-field="o.email" />
+                            </small>
+                            <br />
+                        </h7>
+                    </t>
+                    <t t-if="o.cell_phone">
+                        <h7>
+                            <strong>Telefono:</strong>
+                            <small>
+                                <span t-field="o.cell_phone" />
+                            </small>
+                            <br />
+                        </h7>
+                    </t>
+                    <br />
+                    <br />
+
+                </t>
+            </t>
+        </template>
+
+        <report
+            id="action_report_tsm_customer"
+            model="tsm.customer"
+            string="PDF CLIENTES"
+            menu="True"
+            report_type="qweb-pdf"
+            name="tsm_store.tsm_customer"
+            file="tsm_store.tsm_customer"
+        />
+    </data>
+</odoo>

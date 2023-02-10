@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="tsm_remission_form" model="ir.ui.view">
+            <field name="name">tsm.remission.form</field>
+            <field name="model">tsm.remission</field>
+            <field name="arch" type="xml">
+                <form string="Remisión">
+                    <header>
+                     <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group col = "2">
+                            <group>
+                                <field name="cliente" />
+                                <field name="dispatch_date" />
+                            </group>
+                            <group>
+                                <field name="persona_responsable" />
+                            </group>
+                        </group>
+
+                        <field name="remision_line">
+                            <tree  editable ='bottom'>
+                                <field name="product"/>
+                                <field name="amount"/>
+                            </tree>
+                        </field>
+
+                        
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="tsm_remission_tree" model="ir.ui.view">
+            <field name="name">tsm.remission.tree</field>
+            <field name="model">tsm.remission</field>
+            <field name="arch" type="xml">
+                <tree string="Remisión">
+                    <field name="cliente" />
+                    <field name="dispatch_date" />
+                    <field name="persona_responsable" />
+                    <field name="state" />
+                </tree>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

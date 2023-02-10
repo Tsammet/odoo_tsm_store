@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+        <record id="tsm_brand_form" model="ir.ui.view">
+            <field name="name">tsm.brand.form</field>
+            <field name="model">tsm.brand</field>
+            <field name="arch" type="xml">
+                <form string="Model Description">
+                    <sheet>
+                        <div class="oe_title">
+                            <div class="oe_button_box">
+                                <button name="button_reasign" class="oe_stat_button" icon="fa-user"
+                                    string="Reasignar" type="object" />
+                            </div>
+                        </div>
+                        <group>
+                            <field name="brand" />
+                        </group>
+                        <group>
+                            <field name="prod_ids" readonly='1' />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="tsm_category_tree" model="ir.ui.view">
+            <field name="name">tsm.brand.tree</field>
+            <field name="model">tsm.brand</field>
+            <field name="arch" type="xml">
+                <tree string="Model Description">
+                    <field name="brand" />
+                    <field name="prod_ids" />
+                </tree>
+            </field>
+        </record>
+
+
+        <!-- WIZARD  -->
+        <record id="tsm_brand_reasign" model="ir.ui.view">
+            <field name="name">brand.reasign.form</field>
+            <field name="model">brand.reasign</field>
+            <field name="arch" type="xml">
+                <form string="Reasignacion de tareas">
+                    <group>
+                        <group>
+                            <field name="old_brand" readonly ="1" />
+                        </group>
+                        <group>
+                            <field name="new_brand" />
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="do_reasign" string="Reasignar" type="object"
+                            class="oe_highlight" />
+                    </footer>
+
+                </form>
+            </field>
+
+
+        </record>
+    </data>
+</odoo>
